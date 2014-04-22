@@ -1,0 +1,120 @@
+<div class=row>
+    <%= form_for @profile, multipart: true, html: {class: "custom"} do |f| %>
+        <div class="large-3 columns">
+
+            <div class="row" style="padding-top: 15px;">
+
+
+            </div>
+            <div class="row">
+                <div class="th radius panel summary  add_shadow" id="avatar_pic">
+                    <% if @profile.avatar.blank? %>
+                        <%= image_tag ("child-drawing.jpg") %>
+                    <% else %>
+                        <%= image_tag (@profile.avatar.url) %>
+                    <% end %>
+
+                </div>
+            </div>
+            <div class="row">
+             <span class="button success tiny fileinput-button">
+              <i class="general foundicon-plus"></i>
+                <span> Add</span>
+                 <%= f.file_field :avatar, id: "fileupload" %>
+            </span>
+            </div>
+            <div class="large-3 columns">
+
+            </div>
+            <div class="row panel summary radius add_shadow" style="padding-top: 20px;">
+                <%= f.label :kids, "Kids(optional)", class: "label" %>
+                <%= f.text_field :kids, id: "kids_tags", placeholder: "first name comma separated " %>
+            </div>
+        </div>
+        <div class="large-8 large-left columns ">
+            <div class="row">
+                <fieldset class="panel summary radius add_shadow">
+                    <%= f.label :tag_line, "Tag Line:", class: "label" %>
+                    <%= f.text_field :tag_line, placeholder: "Just when you thought it was safe to socialize the kids..." %>
+                    <%= f.label :web_site, "Web Site:", class: "label" %>
+                    <%= f.text_field :web_site, placeholder: "www.example.com" %>
+                    <%= f.label :description, "Summary:", class: "label" %>
+                    <%= f.text_area :description, id: "", :class => "redactor", :rows => 240, :cols => 200, placeholder: "Summerise your awsomness" %>
+                    <div class="" style="padding-top: 15px;">
+                        <%= f.label :resume, "Add your resume(Pdf):", class: "label", style: "" %>
+                    </div>
+
+                    <% if @profile.resume.blank? %>
+                        <div class="row" id="resume_link" style="padding-top: 15px;">
+                            <%= image_tag ("document_blank_01.png"), style: "padding-bottom:10px;" %>
+                        </div>
+                            <span class="button success tiny fileinput-button" id="add_resume_button">
+                            <i class="general foundicon-plus"></i>
+                            <span> Add</span>
+                                <%= f.file_field :resume %>
+                             </span>
+                                    <span class="button tiny" id="remove_resume_button" style="display: none;">
+                        <i class="general foundicon-minus"></i>
+                        <span>Remove</span>
+                    </span>
+
+                    <% else %>
+                        <div class="row" id="resume_link" style="padding-top: 15px;">
+                            <%= link_to image_tag("pdf_w.png"), @profile.resume.url,style: "padding-bottom:10px;" %>
+                        </div>
+                                <span class="button tiny" id="remove_resume_button">
+                                <i class="general foundicon-minus"></i>
+                                <span>Remove</span>
+                            </span>
+                              <span class="button success tiny fileinput-button" id="add_resume_button" style="display: none;">
+                            <i class="general foundicon-plus"></i>
+
+                            <span> Add</span>
+                                  <%= f.file_field :resume %>
+                             </span>
+                    <% end %>
+
+                </fieldset>
+
+                <div class="large-12 columns panel summary radius add_shadow">
+                    <label class="label">Skills:</label>
+                    <ul id="skill_list" class="inline-list skills_list">
+                        <% @profile.skills.each do |skill| %>
+                            <li id="skill_list_item<%= skill.id %>">
+                                <a href="#" data-dropdown="drop<%= skill.id %>" class="button dropdown skill_button round label"><%= skill.name %></a>
+                                <ul id="drop<%= skill.id %>" class="f-dropdown">
+                                    <li><%= link_to "Delete", profile_skill_path(@profile, skill), method: :delete, remote: true %>
+                                    </li>
+                                </ul>
+                            </li>
+                        <% end %>
+                    </ul>
+                     <span class="button success tiny fileinput-button" id="new_skill_link">
+                        <i class="general foundicon-plus"></i>
+                             <span> Add</span>
+                             </span>
+
+
+                </div>
+
+                <div id="wrapper" class="large-5 left columns panel summary radius add_shadow" style="display: none">
+
+                    <label class="label">Skill Name</label>
+                    <input data-autocomplete-source="<%= index_for_auto_path %>" type="text" placeholder="" id="skill_input" name="name">
+                    <span class="tiny button" id="this_button">Enter Skill</span>
+                    <span class="tiny button inline" id="skill_cancel_button">Cancel</span>
+                </div>
+            </div>
+
+            <div class=row>
+                <%= f.submit "Save", class: " button" %>
+    <% end %>
+    </div>
+    </div>
+</div>
+
+
+
+
+<i style="display: none" id="profile_id"><%= @profile.id %></i>
+

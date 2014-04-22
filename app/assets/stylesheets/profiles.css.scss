@@ -1,0 +1,77 @@
+// Place all the styles related to the profiles controller here.
+// They will automatically be included in application.css.scss.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.thumb_pic{
+  width:170px;
+  height:170px;
+}
+.names{
+  margin-bottom: 0;
+}
+#child_img{
+  vertical-align: text-bottom;
+}
+ .summary{
+   background: rgba(183, 183, 204, 0.52);
+ }
+#profile_des{
+  width:500px;
+  height:400px;
+
+}
+.add_shadow{
+
+    -moz-box-shadow: 10px 10px 5px #888;
+    -webkit-box-shadow: 10px 10px 5px #888;
+    box-shadow: 10px 10px 5px #888;
+
+}
+.label
+{
+  background-color: #53777A;
+}
+.inline-list{
+  li{
+    padding-top: 5px;
+  }
+}
+ul.ui-autocomplete {
+  position: absolute;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: solid 1px #999;
+  cursor: default;
+  li {
+    background-color: #FFF;
+    border-top: solid 1px #DDD;
+    margin: 0;
+    padding: 0;
+    a {
+      color: #000;
+      display: block;
+      padding: 3px;
+    }
+    a.ui-state-hover, a.ui-state-active {
+      background-color: #FFFCB2;
+    }
+  }
+}
+.ui-helper-hidden-accessible { display:none; }
+
+.fileinput-button input {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  transform: translate(-300px, 0) scale(4);
+  font-size: 23px;
+  direction: ltr;
+  cursor: pointer;
+}
+
+.child_icon{
+  font-size: small;
+}

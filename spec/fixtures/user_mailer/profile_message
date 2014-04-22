@@ -1,0 +1,3 @@
+UserMailer#profile_message
+
+Hi, find me in app/views/user_mailer/profile_message

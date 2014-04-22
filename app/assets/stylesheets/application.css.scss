@@ -1,0 +1,88 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ *= require foundation_and_overrides
+ *= require redactor-rails
+ *= require jquery.ui.core
+ *= require jquery.ui.theme
+ *= require dataTables/jquery.dataTables
+ */
+
+@import 'foundation-icons';
+
+#logo_img{
+  vertical-align: text-bottom !important;
+}
+
+#errorExplanation{
+  margin-top: 15px;
+  ul {
+    padding: 10px;
+  }
+}
+.profile_show{
+ h5, h6{
+  color: #000000;
+}
+}
+.header_style {
+  background-color: #444444;
+  border-style:solid;
+  border-width:1px;
+}
+ #search_result tbody tr.even:hover, #search_result tbody tr.even td.highlighted {
+  background-color: #ECFFB3;
+}
+
+ #search_result tbody tr.odd:hover, #search_result tbody tr.odd td.highlighted {
+  background-color: #E6FF99;
+}
+
+_row #search_result tr.even:hover {
+  background-color: #ECFFB3;
+}
+
+_row #search_result tr.even:hover td.sorting_1 {
+  background-color: #DDFF75;
+}
+error_explanation{
+
+}
+
+_row #search_result tr.even:hover td.sorting_2 {
+  background-color: #E7FF9E;
+}
+
+_row #search_result tr.even:hover td.sorting_3 {
+  background-color: #E2FF89;
+}
+
+_row #search_result tr.odd:hover {
+  background-color: #E6FF99;
+}
+
+_row #search_result tr.odd:hover td.sorting_1 {
+  background-color: #D6FF5C;
+}
+
+_row #search_result tr.odd:hover td.sorting_2 {
+  background-color: #E0FF84;
+}
+
+_row #search_result tr.odd:hover td.sorting_3 {
+  background-color: #DBFF70;
+}
+
+.footer-bottom{
+  background: #333;
+  padding: 24px 0 10px;
+}

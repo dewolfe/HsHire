@@ -1,0 +1,7 @@
+
+    <div class="large-8 columns">
+
+ <%=image_tag(profile.avatar.url)%>
+    <%=profile.tag_line%>
+    <%=strip_tags(profile.description[0..100]) unless profile.description.blank?%>
+   </div>

@@ -1,0 +1,23 @@
+<div class="row">
+<table id="search_result" class="display">
+    <thead>
+    <tr>
+        <th style="display: none">Id</th>
+        <th>Name</th>
+        <th>Tag</th>
+        <th>endorsement ratio</th>
+
+    </tr>
+    </thead>
+    <tbody>
+      <% @skills.each do |s| %>
+        <tr data-link='<%= profile_path(s.profile) %>'>
+         <td style="display: none"><%=s.profile.id%></td>
+        <td><%=s.profile.user.full_name%></td>
+          <td><%=s.profile.tag_line%></td>
+          <td><%=Endorsement.get_ratio(s)%></td>
+      </tr>
+        <%end%>
+    </tbody>
+</table>
+</div>

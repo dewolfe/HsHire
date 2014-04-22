@@ -1,0 +1,15 @@
+<%if current_user%>
+<div class="large-12">
+    <%= search_form_for @q, url: skills_search_results_path do |f| %>
+        <div class="row collapse">
+            <div class="small-9 columns">
+                <%= f.text_field :name_cont,data: {autocomplete_source: index_for_auto_path}, placeholder:"someone that knows...",
+                                 id: "search_skill" %>
+            </div>
+            <div class="small-3 columns">
+                <%= f.submit "Find", class: "button postfix" %>
+            </div>
+    <% end %>
+    </div>
+</div>
+<%end%>

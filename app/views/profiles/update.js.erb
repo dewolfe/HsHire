@@ -1,0 +1,12 @@
+<% if @profile.new_record? %>
+alert("Failed to upload painting: <%= j @profile.errors.full_messages.join(', ').html_safe %>");
+<% else %>
+<% if @avatar %>
+$('#avatar_pic').replaceWith('<div class="th radius panel summary  add_shadow" id="avatar_pic"><%= image_tag(@profile.avatar.url) %></div>');
+<%else%>
+$('#resume_link').replaceWith(' <div class="row" id="resume_link" style="padding-top: 15px;><%= link_to image_tag("pdf_w.png"), @profile.resume.url %>');
+$('#add_resume_button').hide()
+$("#remove_resume_button").show()
+
+<%end%>
+<% end %>

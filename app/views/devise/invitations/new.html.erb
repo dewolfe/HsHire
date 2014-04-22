@@ -1,0 +1,23 @@
+<header class="header_style">
+    <div class="row">
+        <h2>Send invintation</h2>
+    </div>
+</header>
+<%= render 'layouts/error_messages',target: resource%>
+
+<div class="row">
+    <div class="large-4 large-left columns ">
+    <fieldset class="panel summary radius add_shadow">
+<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
+  <!--<%= devise_error_messages! %>-->
+
+<% resource.class.invite_key_fields.each do |field| -%>
+  <p><%= f.label field, class:"label" %><br />
+  <%= f.text_field field %></p>
+<% end -%>
+
+  <p><%= f.submit "Send",class:"button small" %></p>
+<% end %>
+        </fieldset>
+        </div>
+</div>

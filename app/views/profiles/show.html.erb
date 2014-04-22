@@ -1,0 +1,87 @@
+<header class="header_style" style="padding-bottom: 15px;">
+    <div class="row">
+        <h2 class='names'><%= @profile.user.full_name %>
+            <% @profile.kids.split(",").each do |kid| %>
+                <span class="child_icon subheader"> <%= image_tag("child.png",id:"child_img") %><%= kid %></span>
+            <% end %>
+        </h2>
+
+
+        <h6 class="names"><%= @profile.tag_line %></h6>
+
+    <% unless @profile.web_site.blank? %>
+
+            <h6 class="name"><span class="general foundicon-globe"></span>
+                <%= link_to @profile.web_site, "http://#{@profile.web_site}", style: "color: black;" %></h6>
+    <% end %>
+    </div>
+</header>
+
+<div class="row">
+    <div class="large-3 columns" style="padding-top: 15px;">
+        <div class="row">
+            <div class="th radius panel summary  add_shadow" id="avatar_pic">
+                <% if @profile.avatar.blank? %>
+                    <%= image_tag ("child-drawing.jpg") %>
+                <% else %>
+                    <%= image_tag (@profile.avatar.url) %>
+                <% end %>
+            </div>
+        </div>
+        <div class="row">
+            <span class="button small" id="send_message_button">Send <%=@profile.user.first_name%> a Message</span>
+        </div>
+    </div>
+    <div class="large-9 left columns ">
+        <div class="row profile_show">
+            <h5>Summary</h5>
+
+            <div class="large-13  row panel summary radius add_shadow">
+                <% if @profile.description.blank? %>
+                    </p>Nothin here yet<%= link_to " edit", edit_profile_path(@profile) %> your profile</p>
+                <% else %>
+                    <%= @profile.description.html_safe %>
+                <% end %>
+            </div>
+            <h5 style="padding-top: 15px;"><%= @profile.user.full_name %> knows about...</h5>
+            <h6 class="subheader">click to endorse a skill</h6>
+            <span>less <%=image_tag("bar.png")%> more</span>
+
+            <div class="large-13  row panel summary radius add_shadow">
+
+
+                <ul id="skill_list" class="inline-list">
+                    <% @profile.skills.each do |skill| %>
+                        <li>
+                            <span class="round label skillbadge" id="skillbadge_<%= skill.id %>" style="background-color: <%=set_skill_color(skill)%>;color: #000000;"><%= skill.name %></span>
+                        </li>
+                    <% end %>
+                </ul>
+            </div>
+            <h5 style="padding-top: 15px;">Resume</h5>
+
+            <div class="large-13  row   radius ">
+                <% if @profile.resume.blank? %>
+                    <%= image_tag ("document_blank_01.png"), style: "padding:10px;" %>
+                <% else %>
+                    <%= link_to image_tag("pdf_w.png"), @profile.resume.url %>
+                <% end %>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div id="dialog-skills" title="Post a endorsement" style="display:none;">
+    <p> I <%= current_user.full_name %> do solemnly swear that <%= @profile.user.first_name %> is totally awesome at
+        <i id="skill_name"></i></p>
+</div>
+<div id="dialog-skills_delete" title="Take it easy" style="display:none;">
+    <p> We already know you think <%= @profile.user.first_name %> is amazing at <i id="skill_name_delete"></i></p>
+
+</div>
+<div id="dialog-skills_own" title="Take it easy" style="display:none;">
+    <p> We already know you think you're amazing at <i id="skill_name_own"></i></p>
+</div>
+<i id="profile_id" style="display: none;"><%=@profile.id%></i>
+<%=render 'send_message'%>
+

@@ -1,0 +1,36 @@
+<% if target.errors.any? %>
+    <div class="row">
+        <div id="errorExplanation" class="large-8 columns ">
+            <fieldset class="alert-box alert radius add_shadow">
+                <h5><%= pluralize(target.errors.count, "error") %> prohibited this record from being saved:</h5>
+                <ul>
+                    <% target.errors.full_messages.each do |msg| %>
+                        <li class="small-7"><%= msg %></li>
+                    <% end %>
+                </ul>
+            </fieldset>
+        </div>
+
+    </div>
+
+<% end %>
+<% if notice %>
+    <div class="row">
+        <div id="errorExplanation" class="large-8 columns ">
+            <div class="alert-box secondary">
+                <%= notice %>
+                <a href="#" class="close">&times;</a>
+            </div>
+        </div>
+    </div>
+<% end %>
+<% if alert %>
+    <div class="row">
+        <div id="errorExplanation" class="large-8 columns ">
+            <div class="alert-box">
+                <%= alert %>
+                <a href="#" class="close">&times;</a>
+            </div>
+        </div>
+    </div>
+<% end %>
